@@ -74,18 +74,20 @@ class DocumentTranslator:
         return output
     
     def _translate_paragraphs(self, doc, category: str) -> int:
-        """Translate all paragraphs in document"""
+        """Translate all paragraphs in document with detailed progress"""
         count = 0
         total = len(doc.paragraphs)
         
         for i, para in enumerate(doc.paragraphs):
-            if i % 20 == 0:
-                print(f"  Processing paragraph {i}/{total}...", end='\r')
+            # Report every 5 paragraphs (was 20) for better feedback
+            if i % 5 == 0 or i == total - 1:
+                progress = (i + 1) / total * 100
+                print(f"  [PROGRESS] Paragraph {i+1}/{total} ({progress:.1f}%)...", end='\r')
             
             if self._translate_paragraph(para, category):
                 count += 1
         
-        print()  # New line after progress
+        print()  # Final newline
         return count
     
     def _translate_paragraph(self, para, category: str) -> bool:
@@ -178,22 +180,30 @@ class DocumentTranslator:
         return True
     
     def _translate_tables(self, doc, category: str) -> int:
-        """Translate all tables in document"""
+        """Translate all tables in document with granular feedback"""
         count = 0
+        table_list = list(doc.tables)
+        total_tables = len(table_list)
         
-        for table_idx, table in enumerate(doc.tables):
-            print(f"  Processing table {table_idx + 1}/{len(doc.tables)}...")
+        for table_idx, table in enumerate(table_list):
+            print(f"  [INFO] Table {table_idx + 1}/{total_tables}")
             
-            for row in table.rows:
+            rows = list(table.rows)
+            total_rows = len(rows)
+            
+            for row_idx, row in enumerate(rows):
+                # Simple progress within large tables
+                if row_idx % 5 == 0:
+                    print(f"    Processing row {row_idx+1}/{total_rows}...", end='\r')
+                    
                 for cell in row.cells:
-                    # Check if cell should be skipped (symbols)
                     if self.formatter.should_skip_cell(cell):
                         continue
                     
-                    # Translate cell paragraphs
                     for para in cell.paragraphs:
                         if self._translate_paragraph(para, category):
                             count += 1
+            print() # Row progress newline
         
         return count
     
