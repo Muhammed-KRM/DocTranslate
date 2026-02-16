@@ -24,6 +24,22 @@ def run_colab_workflow():
     os.makedirs(OUTPUT_FOLDER)
 
     print("🚀 DocTranslate Colab Arayüzüne Hoşgeldiniz!")
+    print("1. Google Translate (Ücretsiz)")
+    print("2. DeepL API (Pro/Free API Key Gerekir)")
+    
+    choice = input("\nLütfen çeviri motorunu seçin (1 veya 2): ").strip()
+    
+    engine = "google"
+    api_key = None
+    
+    if choice == "2":
+        engine = "deepl"
+        api_key = input("Lütfen DeepL API Key'inizi girin: ").strip()
+        if not api_key:
+            print("⚠️ API Key girilmedi, Google Translate'e dönülüyor...")
+            engine = "google"
+
+    print("\n----------------------------------------------------------------")
     print("Lütfen çevirmek istediğiniz .docx dosyalarını seçin...")
     print("----------------------------------------------------------------")
 
@@ -37,7 +53,7 @@ def run_colab_workflow():
     print(f"\n✅ Toplam {len(uploaded)} dosya yüklendi. Çeviri işlemi başlıyor...\n")
 
     # 2. Çeviri İşlemi
-    translator = DocumentTranslator(db_path=DB_PATH)
+    translator = DocumentTranslator(db_path=DB_PATH, engine=engine, api_key=api_key)
     
     translated_files = []
     for filename, content in uploaded.items():

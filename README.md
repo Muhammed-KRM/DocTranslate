@@ -18,7 +18,16 @@ DocTranslate, Microsoft Word (.docx) belgelerini, içindeki tüm görsel formatl
     pip install -r requirements.txt
     ```
 
-## 📖 Kullanım
+## � Çeviri Motoru Seçimi (Google vs DeepL)
+
+Artık hem yerel hem de Colab sürümünde istediğiniz motoru seçebilirsiniz:
+
+1.  **Google Translate (Ücretsiz):** Hızlı ve sınırsızdır. Günlük belgeler için idealdir.
+2.  **DeepL API (Profesyonel):** Daha yüksek çeviri kalitesi sunar. Kullanmak için bir DeepL API Key (Free veya Pro) sahibi olmanız gerekir.
+
+Program başladığında size hangi motoru kullanmak istediğinizi soracaktır. Eğer DeepL'i seçerseniz, API anahtarınızı girmeniz istenecektir.
+
+## �📖 Kullanım
 
 ### 1. Yerel Kullanım (Bilgisayar)
 Programı kendi bilgisayarınızda çalıştırmak için:

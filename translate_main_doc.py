@@ -13,10 +13,19 @@ def main():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         
-    print(f"[TEST] Translating: {input_path}")
+    print("DocTranslate Local - Motor Seçimi")
+    print("1. Google Translate (Ücretsiz)")
+    print("2. DeepL API (Pro/Free API Key Gerekir)")
+    choice = input("\nSeçiminiz (1 veya 2): ").strip()
     
+    engine = "google"
+    api_key = None
+    if choice == "2":
+        engine = "deepl"
+        api_key = input("DeepL API Key: ").strip()
+
     # Initialize translator
-    translator = DocumentTranslator(db_path=db_path)
+    translator = DocumentTranslator(db_path=db_path, engine=engine, api_key=api_key)
     
     # Load input
     with open(input_path, "rb") as f:
