@@ -1,0 +1,10 @@
+# Translator Project Dependencies
+
+# Core document processing
+python-docx>=0.8.11
+
+# HTTP requests for APIs
+requests>=2.31.0
+
+# Optional: DeepL official SDK (alternative to requests)
+# deepl>=1.16.0

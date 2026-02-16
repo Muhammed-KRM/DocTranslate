@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Project specific
+data/app_data.db
+output/*
+!output/.gitkeep
+*.log
+inspect_color.py
+test_v4.py
+inspect_color.py
+main_translation_v*.log
