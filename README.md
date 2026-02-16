@@ -20,14 +20,29 @@ DocTranslate, Microsoft Word (.docx) belgelerini, içindeki tüm görsel formatl
 
 ## 📖 Kullanım
 
-Programı çalıştırmak için aşağıdaki adımları izleyin:
-
-1.  Çevirmek istediğiniz belgeyi `D:\doc\` klasörüne (veya `translate_main_doc.py` içindeki yol ile aynı yere) koyun.
-2.  Terminalden projeye gidin ve çalıştırın:
+### 1. Yerel Kullanım (Bilgisayar)
+Programı kendi bilgisayarınızda çalıştırmak için:
+1.  Çevirmek istediğiniz belgeyi `D:\doc\` klasörüne koyun.
+2.  `translate_main_doc.py` dosyasını çalıştırın:
     ```bash
     python translate_main_doc.py
     ```
-3.  Çevrilmiş dosya otomatik olarak `output/` klasörü altına kaydedilecektir.
+
+### 2. Google Colab Kullanımı (Hızlı & Kolay)
+Hiçbir teknik kurulumla uğraşmadan, doğrudan tarayıcı üzerinden birden fazla dosyayı çevirmek için:
+1.  Projeyi Colab'e yükleyin veya bir hücreye kopyalayın.
+2.  `colab_translator.py` dosyasını çalıştırın:
+    ```python
+    python colab_translator.py
+    ```
+3.  Açılan ekranda **"Dosyaları Seç"** butonuna basarak bilgisayarınızdan bir veya birden fazla `.docx` dosyası seçin.
+4.  İşlem bittiğinde, çevrilen tüm dosyalar otomatik olarak bir **ZIP** dosyası içinde bilgisayarınıza indirilecektir.
+
+## 📦 Toplu İşlem (Batch Processing)
+Yeni Colab arayüzü sayesinde:
+- Birden fazla dosyayı aynı anda yükleyebilirsiniz.
+- Dosyalar sırayla çevrilir.
+- Sonuçlar tek bir paket (ZIP) halinde sunulur.
 
 ## ⚙️ Yapılandırma
 
